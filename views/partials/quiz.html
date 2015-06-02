@@ -1,0 +1,13 @@
+<h1>Quiz</h1>
+<div class = 'timer'>
+    {{ Hours }}:{{ Minutes }}:{{ Seconds }}
+</div>
+<div class="container" ng-repeat="question in questions"><p>{{ $index + 1 +'. ' + question.content }}</p>
+    <input type="radio" name="{{ $index+1 }}" ng-model="A">{{ question.choices.A }}</input><br/>
+    <input type="radio" name="{{ $index+1 }}" ng-model="B">{{ question.choices.B }}</input><br/>
+    <input type="radio" name="{{ $index+1 }}" ng-model="C">{{ question.choices.C }}</input><br/>
+    <input type="radio" name="{{ $index+1 }}" ng-model="D">{{ question.choices.D }}</input><br/>
+    <hr/>
+</div>
+<button ng-click="submit()">Submit</button><button ng-click="cancel()">Cancel</button>
+<br/><br/>
