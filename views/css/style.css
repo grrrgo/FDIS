@@ -1,5 +1,11 @@
+h1,h2,h3,h4,h5,h6 {
+    margin: 5px;
+}
+
 nav {
+    display: block;
     float: right;
+    clear: both;
     margin-right: 50px;
     margin-top: 30px;
 }
@@ -30,9 +36,63 @@ footer {
 .timer {
     position: fixed;
     top: 50px;
-    right: 30px;
+    right: 55px;
     background-color: cornflowerblue;
-    opacity: 0.3;
-    width: 100px;
+    width: 150px;
     height: 40px;
+    padding: 5px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.ctrl-panel {
+    position: fixed;
+    top: 120px;
+    right: 55px;
+    background-color: cornflowerblue;
+    width: 150px;
+    padding: 5px;
+}
+
+.ctrl-panel-list {
+    list-style-type: none;
+    float: left;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.jump-input {
+    width: 100px;
+    height: 10px;
+}
+
+.memo {
+    position: relative;
+    width: 136px;
+    height: 150px;
+    resize: none;
+}
+
+.question-box {
+    padding:5px 12px;
+}
+
+.login-box {
+    margin:50px 12px;
+}
+
+.login-input {
+
+}
+
+.chart-container {
+    padding:0px 5px
+}
+
+.mode-select {
+    margin: 6px;
+}
+
+.mode-box {
+    text-align: center;;
 }

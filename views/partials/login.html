@@ -1,5 +1,10 @@
 <h1>Login</h1>
-<input ng-model="user.username" placeholder="Email"/><br/>
-<input ng-model="user.password" placeholder="Password"/><br/>
-<button ng-click="login(user)">Login</button>
-<a href="/register">Do not have an account? Register now!</a>
+
+<div class="login-box">
+    <input class="input-large" ng-model="user.username" placeholder="Email"/><br/>
+    <br/>
+    <input class="input-large" ng-model="user.password" placeholder="Password"/><br/>
+    <br/>
+    <button class="btn btn-success" ng-click="login(user)">Login</button>
+    <a href="/register">Do not have an account? Register now!</a>
+</div>

@@ -1,13 +1,29 @@
-<h1>Quiz</h1>
+<h1>{{Mode}}</h1>
 <div class = 'timer'>
     {{ Hours }}:{{ Minutes }}:{{ Seconds }}
 </div>
-<div class="container" ng-repeat="question in questions"><p>{{ $index + 1 +'. ' + question.content }}</p>
-    <input type="radio" name="{{ $index+1 }}" ng-model="A">{{ question.choices.A }}</input><br/>
-    <input type="radio" name="{{ $index+1 }}" ng-model="B">{{ question.choices.B }}</input><br/>
-    <input type="radio" name="{{ $index+1 }}" ng-model="C">{{ question.choices.C }}</input><br/>
-    <input type="radio" name="{{ $index+1 }}" ng-model="D">{{ question.choices.D }}</input><br/>
+<div class = 'ctrl-panel'>
+    <div>
+        <ul class="ctrl-panel-list" ng-repeat="label in labels">
+            <li><a ng-click="gotoAnchor(label)">{{label}}</a></li>
+        </ul>
+    </div>
+    <br/>
+    <input ng-model="goToHash" class="jump-input" type="text"/><button ng-click="gotoAnchor(goToHash)" >go!</button>
+    <br/>
+    <span>Memo:</span><br/>
+    <textarea class="memo"></textarea>
+</div>
+<div class="container question-box" ng-repeat="question in questions">
+    <a ng-click="addLabels($index + 1)">Mark</a>
+    <a id="{{$index + 1}}"></a>
+    <br/><p>{{ $index + 1 +'. ' + question.content }}</p>
+    <label><input type="radio" ng-model="A" value="A" name="answer">&nbsp;&nbsp;&nbsp;{{ question.choices.A }}</label><br/>
+    <label><input type="radio" ng-model="B" value="B" name="answer">&nbsp;&nbsp;&nbsp;{{ question.choices.B }}</label><br/>
+    <label><input type="radio" ng-model="C" value="C" name="answer">&nbsp;&nbsp;&nbsp;{{ question.choices.C }}</label><br/>
+    <label><input type="radio" ng-model="D" value="D" name="answer">&nbsp;&nbsp;&nbsp;{{ question.choices.D }}</label><br/>
     <hr/>
 </div>
-<button ng-click="submit()">Submit</button><button ng-click="cancel()">Cancel</button>
+<button class="btn btn-success" ng-click="submit()">Submit</button>
+<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 <br/><br/>

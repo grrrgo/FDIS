@@ -68,7 +68,6 @@ app.post('/register', function (req, res) {
             })
         }
     })
-
 });
 
 app.post('/login', passPort.authenticate('local'), function(req, res){
@@ -88,12 +87,17 @@ app.get('/loggedin', function (req, res) {
 });
 
 app.post('/quiz', function (req, res) {
-    console.log(req.body);
-    questionModel.find({id:{$in:req.body}}, function (err, result) {
-        console.log(err, result);
+    questionModel.find({_id:{$in:req.body}}, function (err, result) {
         res.send(result);
     })
-})
+});
+
+
+app.get('/getquestions', function (req, res) {
+    questionModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
 
 app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode

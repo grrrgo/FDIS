@@ -8,6 +8,8 @@
 # Icon must end with two \r
 Icon
 
+#node_module#
+node_modules
 
 # Thumbnails
 ._*
@@ -76,3 +78,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+
+.gitignore
