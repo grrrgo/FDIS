@@ -7,12 +7,19 @@ var localStrategy = require('passport-local');
 var session = require('express-session');
 var app = express();
 var port = process.env.PORT || 1337;
-app.use(express.static(__dirname + '/views'))
+app.use(express.static(__dirname + '/views'));
 mongoose.connect('mongodb://localhost:27017/Quiz');
 
 //models
 var userModel = require('./models/userModel.js');
 var questionModel = require('./models/questionModel.js');
+var GKModel = require('./models/GKModel.js');
+var SQMModel = require('./models/SQMModel.js');
+var EPModel = require('./models/EPModel.js');
+var MAModel = require('./models/MAModel.js');
+var SVVModel = require('./models/SVVModel.js');
+var SCMModel = require('./models/SCMModel.js');
+var PMModel = require('./models/PMModel.js');
 
 
 //services
@@ -95,6 +102,48 @@ app.post('/quiz', function (req, res) {
 
 app.get('/getquestions', function (req, res) {
     questionModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getGK', function (req, res) {
+    GKModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getSQM', function (req, res) {
+    SQMModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getEP', function (req, res) {
+    EPModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getPM', function (req, res) {
+    PMModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getMA', function (req, res) {
+    MAModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getSVV', function (req, res) {
+    SVVModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.get('/getSCM', function (req, res) {
+    SCMModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });

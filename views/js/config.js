@@ -1,4 +1,4 @@
-angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locationProvider, $routeParams) {
+angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locationProvider) {
     var checkLoggedIn = function ($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
         $http.get('/loggedin').success(function (user) {

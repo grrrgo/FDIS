@@ -1,6 +1,6 @@
 app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, $interval, $location, $anchorScroll, getRandom) {
     var now = new Date().valueOf();
-    var timeLimit = now + 4*60*60*1000;
+    var timeLimit = now + 2*60*60*1000;
     var counting = $interval(function () {
         var current = new Date().valueOf();
         var diff = timeLimit - current;
