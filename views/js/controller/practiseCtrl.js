@@ -36,13 +36,14 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 		return arr;
 	}
 
-	$http.get('/' + $routeParams.category).success(function(response){
+	$http.get('/get' + $routeParams.category).success(function(response){
 		$scope.totalQuestions = response;
+		console.log(response);
 		var questions = randomNfromM(5, $scope.totalQuestions.length),list = [];
 		angular.forEach(questions,function(id){
 			list.push($scope.totalQuestions[id])
 		});
-		$http.post('/quiz', list).success(function (response) {
+		$http.post('/get' + $routeParams.category, list).success(function (response) {
 			$scope.questions = response;
 		});
 	});

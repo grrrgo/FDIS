@@ -106,6 +106,10 @@ app.get('/getquestions', function (req, res) {
     })
 });
 
+
+//Practise mode routes
+//TODO refactor these!!!!
+
 app.get('/getGKModel', function (req, res) {
     GKModel.find({}, {_id:1}, function(err, result){
         res.send(result);
@@ -144,6 +148,51 @@ app.get('/getSVVModel', function (req, res) {
 
 app.get('/getSCMModel', function (req, res) {
     SCMModel.find({}, {_id:1}, function(err, result){
+        res.send(result);
+    })
+});
+
+
+
+
+app.post('/getGKModel', function (req, res) {
+    GKModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getSQMModel', function (req, res) {
+    SQMModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getEPModel', function (req, res) {
+    EPModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getPMModel', function (req, res) {
+    PMModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getMAModel', function (req, res) {
+    MAModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getSVVModel', function (req, res) {
+    SVVModel.find({_id:{$in:req.body}}, function(err, result){
+        res.send(result);
+    })
+});
+
+app.post('/getSCMModel', function (req, res) {
+    SCMModel.find({_id:{$in:req.body}}, function(err, result){
         res.send(result);
     })
 });
