@@ -1,5 +1,29 @@
 angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $interval, $location, $anchorScroll, $routeParams) {
 	$scope.Mode = "Practise Mode";
+	switch ($routeParams.category) {
+		case "GKModel":
+			$scope.Category = "General Knowledge";
+			break;
+		case "SQMModel":
+			$scope.Category = "Software Quality Management";
+			break;
+		case "EPModel":
+			$scope.Category = "Engineering Processes";
+			break;
+		case "PMModel":
+			$scope.Category = "Project Management";
+			break;
+		case "MAModel":
+			$scope.Category = "Metrics & Analysis";
+			break;
+		case "SVVModel":
+			$scope.Category = "Software Verification & Validation";
+			break;
+		case "SCMModel":
+			$scope.Category = "Software Configuration Management";
+			break;
+	}
+
 	function randomNfromM (N, M){
 		var i = 0, j, arr = [];
 		while(i<N){
@@ -12,16 +36,14 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 		return arr;
 	}
 
-	$http.get('/getquestions').success(function(response){
+	$http.get('/' + $routeParams.category).success(function(response){
 		$scope.totalQuestions = response;
 		var questions = randomNfromM(5, $scope.totalQuestions.length),list = [];
 		angular.forEach(questions,function(id){
 			list.push($scope.totalQuestions[id])
 		});
-		console.log(list);
 		$http.post('/quiz', list).success(function (response) {
 			$scope.questions = response;
-			console.log($scope.questions)
 		});
 	});
 
@@ -40,11 +62,9 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 	};
 
 	$scope.submit = function () {
-		$interval.cancel(counting);
 		$location.url('/report');
 	};
 	$scope.cancel = function () {
-		$interval.cancel(counting);
 		$location.url('/');
 	};
 });

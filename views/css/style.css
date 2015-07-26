@@ -90,7 +90,17 @@ footer {
 }
 
 .mode-select {
-    margin: 6px;
+    width: 45%;
+    height: 75px;
+    margin: 10px;
+    float: left;
+    border: 2px solid black;
+    border-radius: 5px;
+    list-style-type: none;
+    line-height: 75px;
+    font-size: 22px;
+    color: #c09853;
+    background-color: cornsilk;
 }
 
 .mode-box {

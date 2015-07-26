@@ -8,7 +8,7 @@ angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locat
                 $rootScope.isLoggedIn = (user != 0);
                 deferred.resolve();
             } else {
-                $rootScope.errorMessage = "You are not login yet."
+                $rootScope.errorMessage = "You are not login yet.";
                 deferred.reject();
                 $location.url('/login');
                 $rootScope.isLoggedIn = (user != 0);
@@ -38,14 +38,13 @@ angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locat
             resolve: {
                 loggedin: checkLoggedIn
             }
-        }).
-        when('/practise', {
+        }).when('/practise', {
             templateUrl: '../partials/practise.html',
             resolve: {
                 loggedin: checkLoggedIn
             }
         }).
-        when('/practise/:catagory', {
+        when('/practise/:category', {
             templateUrl: '../partials/quiz.html',
             controller: 'practiseCtrl',
             resolve: {

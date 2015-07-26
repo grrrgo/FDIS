@@ -84,7 +84,7 @@ app.post('/login', passPort.authenticate('local'), function(req, res){
 });
 
 app.post('/logout', function (req, res) {
-    console.log(req.user.username + " has logged out.")
+    console.log(req.user.username + " has logged out.");
     req.logout();
     res.sendStatus(200);
 });
@@ -106,43 +106,43 @@ app.get('/getquestions', function (req, res) {
     })
 });
 
-app.get('/getGK', function (req, res) {
+app.get('/getGKModel', function (req, res) {
     GKModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getSQM', function (req, res) {
+app.get('/getSQMModel', function (req, res) {
     SQMModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getEP', function (req, res) {
+app.get('/getEPModel', function (req, res) {
     EPModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getPM', function (req, res) {
+app.get('/getPMModel', function (req, res) {
     PMModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getMA', function (req, res) {
+app.get('/getMAModel', function (req, res) {
     MAModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getSVV', function (req, res) {
+app.get('/getSVVModel', function (req, res) {
     SVVModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
 });
 
-app.get('/getSCM', function (req, res) {
+app.get('/getSCMModel', function (req, res) {
     SCMModel.find({}, {_id:1}, function(err, result){
         res.send(result);
     })
