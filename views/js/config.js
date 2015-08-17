@@ -58,6 +58,13 @@ angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locat
                 loggedin: checkLoggedIn
             }
         }).
+        when('/contact', {
+            templateUrl: '../partials/contact.html',
+            controller: 'reportCtrl',
+            resolve: {
+                loggedin: checkLoggedIn
+            }
+        }).
         when('/404', {
             templateUrl: '../partials/404.html'
         }).
