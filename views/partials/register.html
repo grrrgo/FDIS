@@ -3,38 +3,23 @@
         color: red;
     }
 </style>
-<h1>Sign up</h1><br/>
 <div class="login-box">
+	<h4 style="text-align:center">Sign Up </h4>
     <!--a lot of the form validation is done in the html using angular directives-->
-    <input ng-model="user.username" ng-blur="testUsername()" type="text" maxlength="56" placeholder="Email"/>
+    <input type="text" id='fName' ng-model="user.firstName" data-toggle="tooltip" data-placement="top"
+           data-original-title="Please use only letters for names" maxlength="50" placeholder="First name" tabindex=1/>
+    <span ng-show="user.firstName == undefined || user.firstName == ''"> *</span><br/>
+    <input type="text" id='lName' ng-model="user.lastName" maxlength="50" placeholder="Last name" tabindex=2/><span> &nbsp;</span><br/>
+	<input ng-model="user.username" ng-blur="testUsername()" type="email" maxlength="56" placeholder="Email" tabindex=3/>
     <span ng-show="user.username == undefined || user.username == ''"> *</span>
     <span ng-show="usernameErr && user.username != undefined">invalid email address</span><br/>
-    <input ng-model="user.password" type="password" ng-change="testPassword()" placeholder="Password"/>
+    <input ng-model="user.password" type="password" ng-change="testPassword()" placeholder="Password" tabindex=4/>
     <span ng-show="user.password == undefined || user.password == ''"> *</span>
     <span ng-show="passwordShort">password must be at least 6 characters</span><br/>
-    <input ng-model="user.password2" type="password" ng-change="testPassword2()" placeholder="Repeat password"/>
+    <input ng-model="user.password2" type="password" ng-change="testPassword2()" placeholder="Repeat password" tabindex=5/>
     <span ng-show = "user.password2 == undefined || user.password2 == ''" > *</span>
     <span ng-show="passwordErr">password doesn't match</span><br/>
-    <input type="text" id='fName' ng-model="user.firstName" data-toggle="tooltip" data-placement="top"
-           data-original-title="Please use only letters for names" maxlength="50" placeholder="First name"/>
-    <span ng-show="user.firstName == undefined || user.firstName == ''"> *</span><br/>
-    <input type="text" id='lName' ng-model="user.lastName" maxlength="50" placeholder="Last name"/><span> &nbsp;</span><br/>
-    <input ng-model="user.birthday" id="birthday" type="text" class="form-control" placeholder="Birthday">
-    <span ng-show="user.birthday == undefined || user.birthday == ''"> *</span><br/>
-    <button class="btn btn-primary" ng-click="clear()">&nbsp;&nbsp;Clear&nbsp;&nbsp;</button>
-    <button class="btn btn-success" ng-click="register(user)">Submit</button>
+    <button class="btn btn-success" ng-click="register(user)" tabindex=6>Submit</button>
+	<button class="btn btn-primary" ng-click="clear()" tabindex=7>&nbsp;&nbsp;Clear&nbsp;&nbsp;</button>
+    
 </div>
-<script>
-    //bootstrap datepicker initialization, restrict max and min date.
-    $(document).ready(function(){
-        var min = new Date();
-        var max = new Date();
-        min.setFullYear(min.getFullYear() - 14);
-        max.setFullYear(max.getFullYear() - 150);
-        $('#birthday').datepicker({
-            startDate: max,
-            endDate: min
-        });
-    });
-
-</script>
