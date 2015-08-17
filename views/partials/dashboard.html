@@ -1,13 +1,70 @@
-<h1>Dashboard</h1>
-<div class="container">
-    <img class="avatar" src="../img/avatar/default.png" alt="avatar"/>
-    <table class="profileTable">
-        <tr><td>{{ currentUser.firstName }} {{ currentUser.lastName }}</td></tr>
-        <tr><td>{{ currentUser.username }}</td></tr>
+<div>
+	<span style="font-family: serif; font-size:25px; color:firebrick;"> Hello, <em>{{ currentUser.firstName }} {{ currentUser.lastName }} </em></span>
+   <!--  <table class="profileTable">
+        <tr><td>Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}</td> <td>{{ currentUser.username }}</td></tr>
     </table>
+-->
+	<nav ng-controller="navCtrl">
+		<a href="/logout" ng-click="logout()">Logout </a>
+	</nav>
+	<div style="clear: both;"></div>
 </div>
-<div class="chart-container">
-    <h3>History chart</h3>
+
+<h1>Dashboard</h1>
+	<section>
+	<!-- Links for test and practice session -->
+<div class="qpage-links" ng-controller="bokArea">
+	
+	<ul>
+		<li><a href="/quiz">Exam </a></li>
+<!--	<li><a href="">BOK Area to Practice</a> -->	
+		<li> <select class="options">
+			<option value="" disabled selected><span style="text-decoration: underline;">BOK Area to Practice</span></option>
+        	<option value="practise/GKModel">General Knowledge</option>
+			<option value="practise/SQMModel">Software Quality Management</option>
+			<option value="practise/EPModel">Engineering Processes</option>
+			<option value="practise/PMModel">Project Management</option>
+			<option value="practise/MAModel">Metrics & Analysis</option>
+			<option value="practise/SVVModel">Software Verification & Validation</option>
+			<option value="practise/SCMModel">Software Configuration Management</option>
+			</select>
+		</li>
+	</ul>
+	
+		
+</div>	
+</section>
+
+<section>
+<div id="parent_div">
+	<!-- Side nav for setting change -->
+<div class="setting-change" id="left_child_div">
+	<button onclick="resetPW()">Change Password</button> 
+	
+	<br />
+	<button  onclick="changeHstr()">History Settings</button>
+	
+	<script>
+	</script>
+</div>
+
+<div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+      <form method="post" action="demoform.asp">
+        <div>
+          <h3>Login information</h3>
+          <label for="usrnm" class="ui-hidden-accessible">Username:</label>
+          <input type="text" name="user" id="usrnm" placeholder="Username">
+          <label for="pswd" class="ui-hidden-accessible">Password:</label>
+          <input type="password" name="passw" id="pswd" placeholder="Password">
+          <label for="log">Keep me logged in</label>
+          <input type="checkbox" name="login" id="log" value="1" data-mini="true">
+          <input type="submit" data-inline="true" value="Log in">
+        </div>
+      </form>
+    </div>
+	
+<div class="chart-container" id="right_child_div">
+    <h3>Progress Chart</h3>
     <highchart config="chartConfig"></highchart>
     <div id="container"></div>
     <script>
@@ -76,3 +133,5 @@
         });
     </script>
 </div>
+</div> <!-- parent -->
+</section>
