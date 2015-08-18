@@ -36,7 +36,7 @@ angular.module('quizApp').controller('registerCtrl', function ($scope, $rootScop
     //push user information to rootScope enable cross scope sharing if everything is valid.
     $scope.submit = function () {
         if (
-            $scope.user.username && $scope.user.firstName && $scope.user.birthday &&
+            $scope.user.username && $scope.user.firstName && 
             !$scope.usernameErr && !$scope.passwordErr && !$scope.passwordShort
         ) {
             alert("Success!");
@@ -52,16 +52,16 @@ angular.module('quizApp').controller('registerCtrl', function ($scope, $rootScop
 
     $scope.register = function (user){
         if (
-            $scope.user.username && $scope.user.firstName && $scope.user.birthday &&
+            $scope.user.username && $scope.user.firstName && 
             !$scope.usernameErr && !$scope.passwordErr && !$scope.passwordShort
         ) {
             $http.post('/register', user).success(function (response){
                 if (response != "0"){
                     alert("Success!");
                     $rootScope.currentUser = response;
-                    $location.url('/profile');
+                    $location.url('/dashboard');
                 } else {
-                    alert("Sorry, we already have someone named "+ user.username +"!")
+                    alert("Sorry, account for "+ user.username +" exists! Please retry.")
                 }
             })
         } else {
