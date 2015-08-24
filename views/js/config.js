@@ -23,7 +23,7 @@ angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locat
         }).
         when('/dashboard', {
             templateUrl: '../partials/dashboard.html',
-            controller:'reportCtrl',
+            controller: 'dashboardCtrl',
             resolve: {
                 loggedin: checkLoggedIn
             }

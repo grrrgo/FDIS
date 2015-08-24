@@ -1,4 +1,31 @@
-angular.module('quizApp').controller('reportCtrl', function ($scope) {
+angular.module('quizApp').controller('reportCtrl', function ($scope,$rootScope,$http) {
+    var route = '/getPractise';
+    $scope.number = 3;
+    switch ($rootScope.reportType){
+        case 'practise':
+            route = '/getPractise';
+            break;
+        case 'quiz':
+            route = '/getQuiz';
+            break;
+        default:
+            route = '/getPractise';
+            break;
+    }
+
+    var postBody = {
+        user: $rootScope.currentUser.username,
+        number: $scope.number,
+        category: $rootScope.currentCategory
+    };
+
+    $http.post(route,postBody).success(function (response) {
+        if(response){
+
+        }
+    });
+
+
     $scope.chartConfig = {
         options: {
             chart: {
@@ -55,4 +82,4 @@ angular.module('quizApp').controller('reportCtrl', function ($scope) {
         }]
     }
 
-})
+});

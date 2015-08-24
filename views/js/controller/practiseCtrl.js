@@ -1,51 +1,11 @@
-angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $interval, $location, $anchorScroll, $routeParams) {
-	$scope.Mode = "Practise Mode";
-	switch ($routeParams.category) {
-		case "GKModel":
-			$scope.Category = "General Knowledge";
-			break;
-		case "SQMModel":
-			$scope.Category = "Software Quality Management";
-			break;
-		case "EPModel":
-			$scope.Category = "Engineering Processes";
-			break;
-		case "PMModel":
-			$scope.Category = "Project Management";
-			break;
-		case "MAModel":
-			$scope.Category = "Metrics & Analysis";
-			break;
-		case "SVVModel":
-			$scope.Category = "Software Verification & Validation";
-			break;
-		case "SCMModel":
-			$scope.Category = "Software Configuration Management";
-			break;
-	}
+angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $interval, $location, $anchorScroll, $routeParams, $rootScope) {
 
-	function randomNfromM (N, M){
-		var i = 0, j, arr = [];
-		while(i<N){
-			j = Math.floor(Math.random()*(M + 1));
-			if (arr.indexOf(j)<0){
-				arr.push(j);
-				i++
-			}
-		}
-		return arr;
-	}
-
-	$http.get('/get' + $routeParams.category).success(function(response){
-		$scope.totalQuestions = response;
+	$scope.Mode = "Practise Mode" + " (" + $routeParams.category + ")";
+	$rootScope.report = {type:'practise',wrong:[]};
+	$rootScope.wrong = 0;
+	$http.post('/practise', [$routeParams.category]).success(function (response) {
 		console.log(response);
-		var questions = randomNfromM(5, $scope.totalQuestions.length),list = [];
-		angular.forEach(questions,function(id){
-			list.push($scope.totalQuestions[id])
-		});
-		$http.post('/get' + $routeParams.category, list).success(function (response) {
-			$scope.questions = response;
-		});
+		$scope.questions = response;
 	});
 
 	$scope.labels = [];
@@ -63,7 +23,28 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 	};
 
 	$scope.submit = function () {
-		$location.url('/report');
+		var postData = {
+			"username":$rootScope.currentUser.username,
+			"mode": "practise",
+			"time": new Date(),
+			"category": $routeParams.category,
+			"score": 0
+		};
+		$scope.questions.forEach(function (value, index, array) {
+			if (value.answer != value.correctChoice){
+				$rootScope.wrong ++;
+				$rootScope.report.wrong.push(value)
+			}
+
+			if (index == array.length - 1){
+				postData.score = (1-($rootScope.wrong/5))*100;
+				$rootScope.report.score = postData.score;
+				$rootScope.report.category = $routeParams.category;
+				$http.post('/saveRecord', postData).success(function () {
+					$location.url('/report')
+				});
+			}
+		});
 	};
 	$scope.cancel = function () {
 		$location.url('/');

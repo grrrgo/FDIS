@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var passPort = require('passport');
 var localStrategy = require('passport-local');
 var session = require('express-session');
+var async = require("async");
 var app = express();
 var port = process.env.PORT || 1337;
 app.use(express.static(__dirname + '/views'));
@@ -20,7 +21,35 @@ var MAModel = require('./models/MAModel.js');
 var SVVModel = require('./models/SVVModel.js');
 var SCMModel = require('./models/SCMModel.js');
 var PMModel = require('./models/PMModel.js');
+var historyModel = require('./models/historyModels.js');
 
+//Utils
+function randomNfromM (N, A){
+    var i = 0, j, arr = [], M = A.length - 1, result = [];
+    while(i<N){
+        j = Math.floor(Math.random()*(M + 1));
+        if (arr.indexOf(j)<0){
+            arr.push(j);
+            i++
+        }
+    }
+    for (var k = 0; k < arr.length; k++) {
+        result.push(A[arr[k]]._id);
+
+    }
+    return result
+}
+
+function getQuestionFromModel(Model, num) {
+    return function(callback) {
+        Model.find({}, {_id: 1}, function (err, result) {
+            var questionIDs = randomNfromM(num, result);
+            Model.find({_id: {$in: questionIDs}}, function (err, result) {
+                callback(null, result);
+            })
+        });
+    }
+}
 
 //services
 var loginService = require('./services/loginService');
@@ -93,108 +122,81 @@ app.get('/loggedin', function (req, res) {
     res.send(req.isAuthenticated()? req.user: "0")
 });
 
-app.post('/quiz', function (req, res) {
-    questionModel.find({_id:{$in:req.body}}, function (err, result) {
-        res.send(result);
+app.get('/quiz', function (req, res) {
+    var jobs = [
+        getQuestionFromModel(EPModel,5),
+        getQuestionFromModel(GKModel,5),
+        getQuestionFromModel(MAModel,5),
+        getQuestionFromModel(PMModel,5),
+        getQuestionFromModel(SCMModel,5),
+        getQuestionFromModel(SQMModel,5),
+        getQuestionFromModel(SVVModel,5)];
+    async.parallel(jobs, function (err,result) {
+        var returnVal=[];
+        result.forEach(function (value, index ,array) {
+            for (var obj in value){
+                returnVal.push(value[obj])
+            }
+            if (index == array.length - 1) {
+                res.send(returnVal)
+            }
+        })
     })
 });
 
-
-app.get('/getquestions', function (req, res) {
-    questionModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
+app.post('/practise', function (req, res) {
+    var cat;
+    switch(req.body[0]){
+        case "GKModel":
+            cat = GKModel;
+            break;
+        case "SQMModel":
+            cat = SQMModel;
+            break;
+        case "EPModel":
+            cat = EPModel;
+            break;
+        case "PMModel":
+            cat = PMModel;
+            break;
+        case "MAModel":
+            cat = MAModel;
+            break;
+        case "SVVModel":
+            cat = SVVModel;
+            break;
+        case "SCMModel":
+            cat = SCMModel;
+            break;
+    }
+    async.series([getQuestionFromModel(cat,5)], function (err,result) {
+        res.send(result[0]);
     })
 });
 
-
-//Practise mode routes
-//TODO refactor these!!!!
-
-app.get('/getGKModel', function (req, res) {
-    GKModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
+app.post('/saveRecord', function (req, res) {
+    var newRecord = new historyModel(req.body);
+    newRecord.save(function (err, result) {
+        if (err) {
+            res.send('error')
+        } else {
+            res.send(result)
+        }
     })
 });
 
-app.get('/getSQMModel', function (req, res) {
-    SQMModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
+app.post('/getRecord', function (req,res) {
+    //get practise history logic
+    historyModel.find({
+        username:req.body.username,
+        mode:req.body.mode
     })
-});
-
-app.get('/getEPModel', function (req, res) {
-    EPModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
+        .sort({time: -1})
+        .limit(req.body.number)
+        .exec(function (err, result) {
+        res.send(result)
     })
-});
 
-app.get('/getPMModel', function (req, res) {
-    PMModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.get('/getMAModel', function (req, res) {
-    MAModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.get('/getSVVModel', function (req, res) {
-    SVVModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.get('/getSCMModel', function (req, res) {
-    SCMModel.find({}, {_id:1}, function(err, result){
-        res.send(result);
-    })
-});
-
-
-
-
-app.post('/getGKModel', function (req, res) {
-    GKModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getSQMModel', function (req, res) {
-    SQMModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getEPModel', function (req, res) {
-    EPModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getPMModel', function (req, res) {
-    PMModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getMAModel', function (req, res) {
-    MAModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getSVVModel', function (req, res) {
-    SVVModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
-});
-
-app.post('/getSCMModel', function (req, res) {
-    SCMModel.find({_id:{$in:req.body}}, function(err, result){
-        res.send(result);
-    })
 });
 
 app.all('/*', function(req, res, next) {

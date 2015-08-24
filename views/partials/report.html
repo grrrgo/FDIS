@@ -1,68 +1,99 @@
-<h1>Report</h1>
-<highchart config="chartConfig"></highchart>
+<div ng-if="report.type == 'quiz'">
+    <h1>quiz report</h1><br/>
+    <h4>Dear {{currentUser.firstName}}, your overall score is: {{report.score}}</h4><br/>
+    <h4 ng-if="report.score >= 90">Keep up the good work!</h4>
+    <div ng-repeat="result in report.wrong">
+        <p>For the question in {{result.category}}: <br/>
+            {{result.content}}<br/>
+            your answer is: <span style="color: red;">({{result.answer?result.answer:'none'}})&nbsp;
+            {{result.answer?result.choices[result.answer]:''}}</span><br/>
+            correct answer is: <span style="color:green">({{result.correctChoice}})&nbsp;
+            {{result.choices[result.correctChoice]}}</span>
+        </p>
+        <hr/>
+    </div>
+</div>
+
+<div ng-if="report.type == 'practise'">
+    <h1>practise report</h1><br/>
+    <h4>Dear {{currentUser.firstName}}, your overall score is: {{report.score}}</h4><br/>
+    <h4 ng-if="report.score >= 90">Keep up the good work!</h4>
+    <div ng-repeat="result in report.wrong">
+        <p>For the question: <br/>
+            {{result.content}}<br/>
+            your answer is: <span style="color: red;">({{result.answer?result.answer:'none'}})&nbsp;
+            {{result.answer?result.choices[result.answer]:''}}</span><br/>
+            correct answer is: <span style="color:green">({{result.correctChoice}})&nbsp;
+            {{result.choices[result.correctChoice]}}</span>
+        </p>
+        <hr/>
+    </div>
+</div>
+
+<!--<highchart config="chartConfig"></highchart>-->
 <div id="container"></div>
-<script>
-    $(function () {
-        $('#container').highcharts({
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$('#container').highcharts({-->
 
-            chart: {
-                type: 'column',
-                options3d: {
-                    enabled: true,
-                    alpha: 15,
-                    beta: 15,
-                    viewDistance: 25,
-                    depth: 40
-                },
-                marginTop: 80,
-                marginRight: 40
-            },
+            <!--chart: {-->
+                <!--type: 'column',-->
+                <!--options3d: {-->
+                    <!--enabled: true,-->
+                    <!--alpha: 15,-->
+                    <!--beta: 15,-->
+                    <!--viewDistance: 25,-->
+                    <!--depth: 40-->
+                <!--},-->
+                <!--marginTop: 80,-->
+                <!--marginRight: 40-->
+            <!--},-->
 
-            title: {
-                text: 'Total fruit consumption, grouped by gender'
-            },
+            <!--title: {-->
+                <!--text: 'Total fruit consumption, grouped by gender'-->
+            <!--},-->
 
-            xAxis: {
-                categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-            },
+            <!--xAxis: {-->
+                <!--categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']-->
+            <!--},-->
 
-            yAxis: {
-                allowDecimals: false,
-                min: 0,
-                title: {
-                    text: 'Number of fruits'
-                }
-            },
+            <!--yAxis: {-->
+                <!--allowDecimals: false,-->
+                <!--min: 0,-->
+                <!--title: {-->
+                    <!--text: 'Number of fruits'-->
+                <!--}-->
+            <!--},-->
 
-            tooltip: {
-                headerFormat: '<b>{point.key}</b><br>',
-                pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
-            },
+            <!--tooltip: {-->
+                <!--headerFormat: '<b>{point.key}</b><br>',-->
+                <!--pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'-->
+            <!--},-->
 
-            plotOptions: {
-                column: {
-                    stacking: 'normal',
-                    depth: 40
-                }
-            },
+            <!--plotOptions: {-->
+                <!--column: {-->
+                    <!--stacking: 'normal',-->
+                    <!--depth: 40-->
+                <!--}-->
+            <!--},-->
 
-            series: [{
-                name: 'John',
-                data: [5, 3, 4, 7, 2],
-                stack: 'male'
-            }, {
-                name: 'Joe',
-                data: [3, 4, 4, 2, 5],
-                stack: 'male'
-            }, {
-                name: 'Jane',
-                data: [2, 5, 6, 2, 1],
-                stack: 'female'
-            }, {
-                name: 'Janet',
-                data: [3, 0, 4, 4, 3],
-                stack: 'female'
-            }]
-        });
-    });
-</script>
+            <!--series: [{-->
+                <!--name: 'John',-->
+                <!--data: [5, 3, 4, 7, 2],-->
+                <!--stack: 'male'-->
+            <!--}, {-->
+                <!--name: 'Joe',-->
+                <!--data: [3, 4, 4, 2, 5],-->
+                <!--stack: 'male'-->
+            <!--}, {-->
+                <!--name: 'Jane',-->
+                <!--data: [2, 5, 6, 2, 1],-->
+                <!--stack: 'female'-->
+            <!--}, {-->
+                <!--name: 'Janet',-->
+                <!--data: [3, 0, 4, 4, 3],-->
+                <!--stack: 'female'-->
+            <!--}]-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->

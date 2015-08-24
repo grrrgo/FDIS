@@ -1,5 +1,7 @@
-app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, $interval, $location, $anchorScroll, getRandom) {
+app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, $interval, $location, $anchorScroll, getRandom, $rootScope) {
     var now = new Date().valueOf();
+    $rootScope.report = {type:'quiz', wrong: []};
+    $rootScope.wrong = 0;
     var timeLimit = now + 2*60*60*1000;
     var counting = $interval(function () {
         var current = new Date().valueOf();
@@ -22,32 +24,11 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
         $interval.cancel(counting);
     });
 
-
-    function randomNfromM (N, M){
-        var i = 0, j, arr = [];
-        while(i<N){
-            j = Math.floor(Math.random()*(M + 1));
-            if (arr.indexOf(j)<0){
-                arr.push(j);
-                i++
-            }
-        }
-        return arr;
-    }
-
     $scope.Mode = "Quiz";
 
-    $http.get('/getquestions').success(function(response){
-        $scope.totalQuestions = response;
-        var questions = randomNfromM(5, $scope.totalQuestions.length),list = [];
-        angular.forEach(questions,function(id){
-            list.push($scope.totalQuestions[id])
-        });
-        console.log(list);
-        $http.post('/quiz', list).success(function (response) {
-            $scope.questions = response;
-            console.log($scope.questions)
-        });
+    $http.get('/quiz').success(function (response) {
+        $scope.questions = response;
+        console.log(response)
     });
 
     $scope.labels = [];
@@ -66,7 +47,73 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
 
     $scope.submit = function () {
         $interval.cancel(counting);
-        $location.url('/report');
+        var epwrong = 0, gkwrong = 0, mawrong = 0, pmwrong = 0, scmwrong = 0, sqmwrong = 0, svvwrong = 0;
+        var postData = {
+            "username":$rootScope.currentUser.username,
+            "mode": "quiz",
+            "time": new Date(),
+            "score": 0,
+            "category": null,
+            epScore: 0,
+            gkScore: 0,
+            maScore: 0,
+            pmScore: 0,
+            scmScore: 0,
+            sqmScore: 0,
+            svvScore: 0
+        };
+        $scope.questions.forEach(function (value, index, array) {
+            if (value.answer != value.correctChoice){
+                $rootScope.wrong ++;
+                $rootScope.report.wrong.push(value);
+                switch (value.category){
+                    case 'ep':
+                        epwrong ++;
+                        break;
+                    case 'gk':
+                        gkwrong ++;
+                        break;
+                    case 'mam':
+                        mawrong ++;
+                        break;
+                    case 'pm':
+                        pmwrong ++;
+                        break;
+                    case 'scm':
+                        scmwrong ++;
+                        break;
+                    case 'sqm':
+                        sqmwrong ++;
+                        break;
+                    case 'SVV':
+                        svvwrong ++;
+                        break;
+                }
+
+            }
+
+            if (index == array.length - 1){
+                postData.score = (1-($rootScope.wrong/35))*100;
+                $rootScope.report.score = postData.score;
+                $rootScope.report.epScore = (1-(epwrong/5))*100;
+                $rootScope.report.gkScore = (1-(gkwrong/5))*100;
+                $rootScope.report.maScore = (1-(mawrong/5))*100;
+                $rootScope.report.pmScore = (1-(pmwrong/5))*100;
+                $rootScope.report.scmScore = (1-(scmwrong/5))*100;
+                $rootScope.report.sqmScore = (1-(sqmwrong/5))*100;
+                $rootScope.report.svvScore = (1-(svvwrong/5))*100;
+                postData.epScore = $rootScope.report.epScore;
+                postData.gkScore = $rootScope.report.gkScore;
+                postData.maScore = $rootScope.report.maScore;
+                postData.pmScore = $rootScope.report.pmScore;
+                postData.scmScore = $rootScope.report.scmScore;
+                postData.sqmScore = $rootScope.report.sqmScore;
+                postData.svvScore = $rootScope.report.svvScore;
+                $http.post('/saveRecord', postData).success(function () {
+                    $location.url('/report');
+                });
+            }
+        });
     };
     $scope.cancel = function () {
         $interval.cancel(counting);
