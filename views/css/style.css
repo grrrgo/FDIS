@@ -1,5 +1,5 @@
 body {
-	margin: 20px;
+max-width: 1600px;
 	padding : 0;
 	background: url("../img/background2.png") no-repeat center center fixed;
 	background-size: cover;
@@ -7,7 +7,7 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	
+	margin: 0 auto;
 }
 
 h1 {
@@ -158,29 +158,10 @@ footer {
 	padding-right: 15px;
 }
 
-select {
-	border: none;
-	background: none;
-	font-size: 20px;
-	font-family: "Times New Roman", Georgia, serif, monospace;
-	color: cornflowerblue;
-	
-}
-
- select option {
-	background: none;
-	font-size: .7em;
-	line-height: 2em;
-}
-
- select option[val="1"] {
-	text-decoration: underline;
-	
-}
-
 #parent_div {
-	width: 100%; 
-	margin-top: 50px;
+width: 100%; 
+	margin: 0;
+	position: relative;
 }
 
 .setting-change {
@@ -211,4 +192,98 @@ select {
     padding:0px 5px;
 	margin: 0;
 	display:inline-block;
+}
+
+#primary_nav_wrap
+{
+	font-size: 1.5em;
+	font-family: "Times New Roman", Georgia, serif, monospace;
+	color: forestgreen;
+	background-color: none;
+}
+
+#primary_nav_wrap ul
+{
+	list-style:none;
+	position:relative;
+	float:left;
+	margin:0;
+	padding-right: 0;
+	padding-left: 15px;
+}
+
+#primary_nav_wrap ul li
+{
+	position: relative;
+	float: left;
+	margin: 0;
+	padding-left: 30px;
+}
+
+#primary_nav_wrap ul li a
+{
+	display:inline;
+	font-size: 1em;
+	font-family: "Times New Roman", Georgia, serif, monospace;
+	color: forestgreen;
+	background-color: none;
+	
+}
+
+#primary_nav_wrap ul li ul
+{
+	display: none;
+	z-index: 5;
+}
+
+#primary_nav_wrap ul ul li
+{
+	float:left;
+	width: 350px;
+	font-size: .7em;
+	line-height: 1.5em;	
+	display: block;
+	background: beige;
+	white-space: nowrap;
+	padding: 0;
+}
+
+#primary_nav_wrap ul li:hover ul
+{
+	display: block;
+	background: beige;
+	min-width: 200px;
+}
+
+#primary_nav_wrap ul ul
+{
+	display: block;
+	text-align: left;
+	position:absolute;
+}
+
+#contactUs {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+/*	background: #f9f6db; /*#dcf2f7;* /
+	box-shadow: 0 0 8px 8px #f9f6db outset;
+	opacity: 0.5;
+*/
+	text-align: justify;
+	font-size: 1.5em;
+	line-height: 2em;
+	font-family: "Times New Roman", Georgia, serif, monospace;
+	
+}
+
+#contactUs ul {
+	line-height: 3em;
+}
+
+#contactUs ul  li{
+	line-height: 1.5em;
+	padding-top: 10px;
 }

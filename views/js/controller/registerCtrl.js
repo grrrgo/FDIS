@@ -1,6 +1,6 @@
 angular.module('quizApp').controller('registerCtrl', function ($scope, $rootScope, $http, $location) {
     //initialization of scope variables.
-    $scope.user = {};
+	$scope.user = {};
     $scope.passwordErr = false;
     $scope.usernameErr = false;
     $scope.passwordShort = false;

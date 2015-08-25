@@ -1,56 +1,100 @@
 <h1>Dashboard</h1>
-	<section>
+	
 	<!-- Links for test and practice session -->
 <div class="qpage-links">
 
-	<!--<ul>
-		<li><a href="/quiz">Exam </a></li>
-&lt;!&ndash;	<li><a href="">BOK Area to Practice</a> &ndash;&gt;
-		<li> <select class="options">
-			<option value="" disabled selected><span style="text-decoration: underline;">BOK Area to Practice</span></option>
-        	<option value="practise/GKModel">General Knowledge</option>
-			<option value="practise/SQMModel">Software Quality Management</option>
-			<option value="practise/EPModel">Engineering Processes</option>
-			<option value="practise/PMModel">Project Management</option>
-			<option value="practise/MAModel">Metrics & Analysis</option>
-			<option value="practise/SVVModel">Software Verification & Validation</option>
-			<option value="practise/SCMModel">Software Configuration Management</option>
-			</select>
-		</li>
-	</ul>-->
+	<nav id="primary_nav_wrap">
+	<ul>
+	  <li class="current-menu-item"><a href="/quiz">Exam </a></li>
+	  <li>Area to Practice &#9662;
+		<ul>
+			<li><a ng-href="practise/GKModel">General Knowledge</a></li>
+			<li><a ng-href="practise/SQMModel">Software Quality Management</a></li>
+			<li><a ng-href="practise/EPModel">Engineering Processes</a></li>
+			<li><a ng-href="practise/PMModel">Project Management</a></li>
+			<li><a ng-href="practise/MAModel">Metrics & Analysis</a></li>
+			<li><a ng-href="practise/SVVModel">Software Verification & Validation</a></li>
+			<li><a ng-href="practise/SCMModel">Software Configuration Management</a></li>
+			
+		</ul>
+	  </li>
+	</ul>
+	</nav>
 	
 		
 </div>	
-</section>
 
-<section>
 <div id="parent_div">
 	<!-- Side nav for setting change -->
-<div class="setting-change" id="left_child_div">
-	<ul>
-		<a href="/quiz">Exam </a>
-		<a ng-href="practise/GKModel"><li class="mode-select">General Knowledge</li></a>
-		<a ng-href="practise/SQMModel"><li class="mode-select">Software Quality Management</li></a>
-		<a ng-href="practise/EPModel"><li class="mode-select">Engineering Processes</li></a>
-		<a ng-href="practise/PMModel"><li class="mode-select">Project Management</li></a>
-		<a ng-href="practise/MAModel"><li class="mode-select">Metrics & Analysis</li></a>
-		<a ng-href="practise/SVVModel"><li class="mode-select">Software Verification & Validation</li></a>
-		<a ng-href="practise/SCMModel"><li class="mode-select">Software Configuration Management</li></a>
-	</ul>
-	<button class="btn btn-primary">Change Password</button>
-	<toggle-switch ng-model="numbers" on-label="5" off-label="3" ng-click="init()"></toggle-switch>
+<div class="setting-change">
+	<a class="btn btn-success" data-toggle="modal" href="#resetPW"  data-backdrop="false">Change Password</a>
+	<br />
+	<a class="btn btn-success" data-toggle="modal" href="#changeHstr"  data-backdrop="false">Progress Chart Settings</a>	
 
-	<br/>
-
-	<script>
-	</script>
 </div>
 	
-<div class="chart-container" id="right_child_div">
+<div class="chart-container">
     <h3>Progress Chart</h3>
     <highchart config="quizChartConfig"></highchart>
     <br/>
     <highchart config="practiseChartConfig"></highchart>
 </div>
 </div>
-</section>
+
+<div  class="modal fade" id="resetPW" role="dialogue">
+	<div class="modal-dialogue">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Change Password</h4>
+			</div>
+			<div   class="modal-body">
+			<!-- Popup Div Starts Here -->
+
+				<!--a lot of the form validation is done in the html using angular directives-->
+				<input ng-model="user.password" type="password" ng-change="reAuth()" placeholder="Current Password" tabindex=1/>
+				<span ng-show = "user.password == undefined || user.password == ''" > *</span>
+				<span ng-show="incorrectPw">Wrong password!</span><br/>
+				<input ng-model="user.password2" type="password" ng-change="testPassword()" placeholder="New Password" tabindex=2/>
+				<span ng-show="user.password2 == undefined || user.password == ''"> *</span>
+				<span ng-show="passwordShort2">password must be at least 6 characters</span><br/>
+				<input ng-model="user.password3" type="password" ng-change="testPassword2()" placeholder="Repeat password" tabindex=3/>
+				<span ng-show = "user.password3 == undefined || user.password3 == ''" > *</span>
+				<span ng-show="passwordErr">password doesn't match</span><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" ng-click="pwSave(user)">Save</button>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div  class="modal fade" id="changeHstr" role="dialogue">
+	<div class="modal-dialogue">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Change Progress Chart Setting</h4>
+			</div>
+			<div   class="modal-body">
+			<!-- Popup Div Starts Here -->
+				<label for="settings"><strong>Number of historical scores on progress chart</strong><br>
+				<select style="width: 50px" convert-to-number>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select><br>
+				
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" ng-click="pwSave(user)">Save</button>				
+			</div>
+		</div>
+	</div>
+</div>
+

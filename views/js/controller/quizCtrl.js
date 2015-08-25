@@ -1,4 +1,5 @@
 app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, $interval, $location, $anchorScroll, getRandom, $rootScope) {
+	$rootScope.displayDBoard = false;
     var now = new Date().valueOf();
     $rootScope.report = {type:'quiz', wrong: []};
     $rootScope.wrong = 0;
