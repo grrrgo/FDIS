@@ -197,13 +197,13 @@ select {
 	line-height: 5em;
 }
 
-.setting-change button {
-	background: none;
-	font-family: "Times New Roman", Georgia, serif, cursive;
-	font-size: 1.2em;
-	color: #008f56;
-	
-}
+/*.setting-change button {*/
+	/*background: none;*/
+	/*font-family: "Times New Roman", Georgia, serif, cursive;*/
+	/*font-size: 1.2em;*/
+	/*color: #008f56;*/
+	/**/
+/*}*/
 
 .chart-container {
 	width: 70%;

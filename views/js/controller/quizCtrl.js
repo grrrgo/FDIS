@@ -117,7 +117,7 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
     };
     $scope.cancel = function () {
         $interval.cancel(counting);
-        $location.url('/');
+        $location.url('/dashboard');
     };
 
 });

@@ -19,10 +19,10 @@
         <a ng-click="addLabels($index + 1)">Mark</a>
         <a id="{{$index + 1}}"></a>
         <br/><p>{{ $index + 1 +'. ' + question.content }}</p>
-        <label><input type="radio" ng-click="questions[$index].answer = 'A'" name="{{$index}}">&nbsp;&nbsp;&nbsp;{{ question.choices.A }}</label><br/>
-        <label><input type="radio" ng-click="questions[$index].answer = 'B'" name="{{$index}}">&nbsp;&nbsp;&nbsp;{{ question.choices.B }}</label><br/>
-        <label><input type="radio" ng-click="questions[$index].answer = 'C'" name="{{$index}}">&nbsp;&nbsp;&nbsp;{{ question.choices.C }}</label><br/>
-        <label><input type="radio" ng-click="questions[$index].answer = 'D'" name="{{$index}}">&nbsp;&nbsp;&nbsp;{{ question.choices.D }}</label><br/>
+        <label><input type="radio" ng-click="questions[$index].answer = 'A'" name="{{$index}}">&nbsp;&nbsp;(A)&nbsp;{{ question.choices.A }}</label><br/>
+        <label><input type="radio" ng-click="questions[$index].answer = 'B'" name="{{$index}}">&nbsp;&nbsp;(B)&nbsp;{{ question.choices.B }}</label><br/>
+        <label><input type="radio" ng-click="questions[$index].answer = 'C'" name="{{$index}}">&nbsp;&nbsp;(C)&nbsp;{{ question.choices.C }}</label><br/>
+        <label><input type="radio" ng-click="questions[$index].answer = 'D'" name="{{$index}}">&nbsp;&nbsp;(D)&nbsp;{{ question.choices.D }}</label><br/>
         <hr/>
 
 </div>

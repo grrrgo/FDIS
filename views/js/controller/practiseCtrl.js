@@ -47,6 +47,6 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 		});
 	};
 	$scope.cancel = function () {
-		$location.url('/');
+		$location.url('/dashboard');
 	};
 });

@@ -1,5 +1,4 @@
 angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $rootScope, $q) {
-
     var quizPostData = {
         username: $rootScope.currentUser.username,
         mode:'quiz',
@@ -23,8 +22,14 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
         return deferred.promise
     }
 
-    function init (){
-
+    $scope.init = function (){
+        if($scope.numbers){
+            quizPostData.number = 5;
+            practisePostData.number = 5;
+        } else {
+            quizPostData.number = 3;
+            practisePostData.number = 3;
+        }
         $scope.quizChartConfig = {
             "options": {
                 "chart": {
@@ -39,9 +44,14 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
             xAxis: {
                 categories: []
             },
+            yAxis:{
+                title:{text:"Score"},
+                max: 100,
+                min: 0
+            },
             "series": [
                 {
-                    "name": "TotalPoints",
+                    "name": "Overall Score",
                     "data": [],
                     "connectNulls": true,
                     "id": "series-1"
@@ -80,13 +90,13 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
                 },
                 {
                     "data": [],
-                    "id": "series-6",
+                    "id": "series-7",
                     "type": "column",
                     "name": "Software Verification & Validation"
                 },
                 {
                     "data": [],
-                    "id": "series-6",
+                    "id": "series-8",
                     "type": "column",
                     "name": "Software Configuration Management"
                 }
@@ -99,7 +109,7 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
             },
             "loading": false,
             "size": {}
-        }
+        };
 
         $scope.practiseChartConfig = {
             "options": {
@@ -114,6 +124,11 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
             },
             xAxis: {
                 categories: []
+            },
+            yAxis:{
+                title:{text:"Score"},
+                max: 100,
+                min: 0
             },
             "series": [
                 {
@@ -158,7 +173,7 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
 
             })
         });
-    }
+    };
 
-    init();
+    $scope.init();
 });

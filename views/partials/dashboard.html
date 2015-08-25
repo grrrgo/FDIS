@@ -1,28 +1,8 @@
-<div>
-	<span style="font-family: serif; font-size:25px; color:firebrick;"> Hello, <em>{{ currentUser.firstName }} {{ currentUser.lastName }} </em></span>
-   <!--  <table class="profileTable">
-        <tr><td>Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}</td> <td>{{ currentUser.username }}</td></tr>
-    </table>
--->
-	<nav ng-controller="navCtrl">
-		<a href="/logout" ng-click="logout()">Logout </a>
-	</nav>
-	<div style="clear: both;"></div>
-</div>
-
 <h1>Dashboard</h1>
 	<section>
 	<!-- Links for test and practice session -->
 <div class="qpage-links">
-    <ul>
-        <a ng-href="practise/GKModel"><li class="mode-select">General Knowledge</li></a>
-        <a ng-href="practise/SQMModel"><li class="mode-select">Software Quality Management</li></a>
-        <a ng-href="practise/EPModel"><li class="mode-select">Engineering Processes</li></a>
-        <a ng-href="practise/PMModel"><li class="mode-select">Project Management</li></a>
-        <a ng-href="practise/MAModel"><li class="mode-select">Metrics & Analysis</li></a>
-        <a ng-href="practise/SVVModel"><li class="mode-select">Software Verification & Validation</li></a>
-        <a ng-href="practise/SCMModel"><li class="mode-select">Software Configuration Management</li></a>
-    </ul>
+
 	<!--<ul>
 		<li><a href="/quiz">Exam </a></li>
 &lt;!&ndash;	<li><a href="">BOK Area to Practice</a> &ndash;&gt;
@@ -47,11 +27,21 @@
 <div id="parent_div">
 	<!-- Side nav for setting change -->
 <div class="setting-change" id="left_child_div">
-	<button onclick="resetPW()">Change Password</button> 
-	
-	<br />
-	<button  onclick="changeHstr()">History Settings</button>
-	
+	<ul>
+		<a href="/quiz">Exam </a>
+		<a ng-href="practise/GKModel"><li class="mode-select">General Knowledge</li></a>
+		<a ng-href="practise/SQMModel"><li class="mode-select">Software Quality Management</li></a>
+		<a ng-href="practise/EPModel"><li class="mode-select">Engineering Processes</li></a>
+		<a ng-href="practise/PMModel"><li class="mode-select">Project Management</li></a>
+		<a ng-href="practise/MAModel"><li class="mode-select">Metrics & Analysis</li></a>
+		<a ng-href="practise/SVVModel"><li class="mode-select">Software Verification & Validation</li></a>
+		<a ng-href="practise/SCMModel"><li class="mode-select">Software Configuration Management</li></a>
+	</ul>
+	<button class="btn btn-primary">Change Password</button>
+	<toggle-switch ng-model="numbers" on-label="5" off-label="3" ng-click="init()"></toggle-switch>
+
+	<br/>
+
 	<script>
 	</script>
 </div>
