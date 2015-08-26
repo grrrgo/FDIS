@@ -1,5 +1,5 @@
 angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $interval, $location, $anchorScroll, $routeParams, $rootScope) {
-
+	$rootScope.displayDBoard = false;
 	$scope.Mode = "Practise Mode" + " (" + $routeParams.category + ")";
 	$rootScope.report = {type:'practise',wrong:[]};
 	$rootScope.wrong = 0;

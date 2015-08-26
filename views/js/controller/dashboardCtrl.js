@@ -1,4 +1,5 @@
 angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $rootScope, $q) {
+	$rootScope.displayDBoard = false;
     var quizPostData = {
         username: $rootScope.currentUser.username,
         mode:'quiz',
