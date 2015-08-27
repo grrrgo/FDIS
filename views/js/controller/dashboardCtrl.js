@@ -1,5 +1,11 @@
-angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $rootScope, $q) {
+angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $rootScope, $q, $location) {
 	$rootScope.displayDBoard = false;
+
+    $scope.user = {};
+    $scope.passwordErr = false;
+    $scope.usernameErr = false;
+    $scope.passwordShort = false;
+
     var quizPostData = {
         username: $rootScope.currentUser.username,
         mode:'quiz',
@@ -10,6 +16,38 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
         username: $rootScope.currentUser.username,
         mode:'practise',
         number: 3
+    };
+
+    $scope.pwSave = function (user) {
+        var postData = {
+            username: $rootScope.currentUser.username,
+            oldPassword: user.oldPassword,
+            newPassword: user.password2
+        };
+        $http.post('/changePasswd', postData).success(function (response) {
+            if (response == 'success'){
+                alert ('Success!');
+                $scope.user={};
+            } else if (response == 'incorrect') {
+                alert ('Current Password not correct!')
+                $scope.user={};
+                $location.url('/dashboard#resetPW')
+
+            } else if (response == 'error'){
+                alert ('Error!')
+                $scope.user={};
+            }
+        })
+    };
+
+    //test on the length of first password.
+    $scope.testPassword = function () {
+        $scope.passwordShort = $scope.user.password.length <= 5
+    };
+
+    //test if both passwords match.
+    $scope.testPassword2 = function () {
+        $scope.passwordErr = ($scope.user.password != $scope.user.password2);
     };
 
     function getData (postData,number){
@@ -23,14 +61,10 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
         return deferred.promise
     }
 
-    $scope.init = function (){
-        if($scope.numbers){
-            quizPostData.number = 5;
-            practisePostData.number = 5;
-        } else {
-            quizPostData.number = 3;
-            practisePostData.number = 3;
-        }
+    $scope.init = function (num){
+
+        quizPostData.number = num? num: 3;
+        practisePostData.number = num? num: 3;
         $scope.quizChartConfig = {
             "options": {
                 "chart": {

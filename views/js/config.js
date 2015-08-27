@@ -10,7 +10,7 @@ angular.module('quizApp').config(function ($routeProvider, $httpProvider, $locat
             } else {
                 $rootScope.errorMessage = "You are not login yet.";
                 deferred.reject();
-                $location.url('/login');
+                $location.url('/');
                 $rootScope.isLoggedIn = (user != 0);
             }
         })

@@ -1,6 +1,30 @@
 angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $interval, $location, $anchorScroll, $routeParams, $rootScope) {
 	$rootScope.displayDBoard = false;
-	$scope.Mode = "Practise Mode" + " (" + $routeParams.category + ")";
+	var BOK = "";
+	switch ($routeParams.category){
+		case 'GKModel':
+			BOK =  "General Knowledge";
+			break;
+		case 'SQMModel':
+			BOK = 'Software Quality Management';
+			break;
+		case 'EPModel':
+			BOK = 'Engineering Processes';
+			break;
+		case 'PMModel':
+			BOK = 'Project Management';
+			break;
+		case 'MAModel':
+			BOK = 'Metrics & Analysis';
+			break;
+		case 'SVVModel':
+			BOK = 'Software Verification & Validation';
+			break;
+		case 'SCMModel':
+			BOK = 'Software Configuration Management';
+			break;
+	}
+	$scope.Mode = "Practise Mode" + " (" + BOK + ")";
 	$rootScope.report = {type:'practise',wrong:[]};
 	$rootScope.wrong = 0;
 	$http.post('/practise', [$routeParams.category]).success(function (response) {
@@ -37,7 +61,7 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 			}
 
 			if (index == array.length - 1){
-				postData.score = (1-($rootScope.wrong/5))*100;
+				postData.score = Math.ceil((1-($rootScope.wrong/5))*100);
 				$rootScope.report.score = postData.score;
 				$rootScope.report.category = $routeParams.category;
 				$http.post('/saveRecord', postData).success(function () {

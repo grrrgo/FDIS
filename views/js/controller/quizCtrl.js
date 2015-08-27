@@ -15,7 +15,7 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
         $scope.Seconds =Seconds<10?'0'+Seconds:Seconds;
         if ($scope.Hours == 0 && $scope.Minutes == 0 && $scope.Seconds ==0){
             alert("Time's up, submitting quiz...")
-            //TODO submit quiz code here.
+            $scope.submit()
         }
     },1000);
 
@@ -27,7 +27,7 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
 
     $scope.Mode = "Quiz";
 
-    $http.get('/quiz').success(function (response) {
+    $http.post('/quiz').success(function (response) {
         $scope.questions = response;
         console.log(response)
     });
@@ -94,15 +94,15 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
             }
 
             if (index == array.length - 1){
-                postData.score = (1-($rootScope.wrong/35))*100;
+                postData.score = Math.ceil((1-($rootScope.wrong/35))*100);
                 $rootScope.report.score = postData.score;
-                $rootScope.report.epScore = (1-(epwrong/5))*100;
-                $rootScope.report.gkScore = (1-(gkwrong/5))*100;
-                $rootScope.report.maScore = (1-(mawrong/5))*100;
-                $rootScope.report.pmScore = (1-(pmwrong/5))*100;
-                $rootScope.report.scmScore = (1-(scmwrong/5))*100;
-                $rootScope.report.sqmScore = (1-(sqmwrong/5))*100;
-                $rootScope.report.svvScore = (1-(svvwrong/5))*100;
+                $rootScope.report.epScore = Math.ceil((1-(epwrong/5))*100);
+                $rootScope.report.gkScore = Math.ceil((1-(gkwrong/5))*100);
+                $rootScope.report.maScore = Math.ceil((1-(mawrong/5))*100);
+                $rootScope.report.pmScore = Math.ceil((1-(pmwrong/5))*100);
+                $rootScope.report.scmScore =Math.ceil((1-(scmwrong/5))*100);
+                $rootScope.report.sqmScore =Math.ceil((1-(sqmwrong/5))*100);
+                $rootScope.report.svvScore =Math.ceil((1-(svvwrong/5))*100);
                 postData.epScore = $rootScope.report.epScore;
                 postData.gkScore = $rootScope.report.gkScore;
                 postData.maScore = $rootScope.report.maScore;

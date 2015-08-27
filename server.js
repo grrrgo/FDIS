@@ -122,7 +122,7 @@ app.get('/loggedin', function (req, res) {
     res.send(req.isAuthenticated()? req.user: "0")
 });
 
-app.get('/quiz', function (req, res) {
+app.post('/quiz', function (req, res) {
     var jobs = [
         getQuestionFromModel(EPModel,5),
         getQuestionFromModel(GKModel,5),
@@ -197,6 +197,33 @@ app.post('/getRecord', function (req,res) {
         res.send(result)
     })
 
+});
+
+app.post('/changePasswd', function (req, res) {
+    userModel.find({username:req.body.username, password:req.body.oldPassword}, function (err, result) {
+        if (result && result.length != 0) {
+            console.log(result, req.body);
+            /*result.password  = req.body.newPassword;
+            result.save(function (err) {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send('success');
+                }
+            })*/
+
+            userModel.update({username:req.body.username},{password:req.body.newPassword},false,function (err, num){
+                if (num.ok == 1){
+                    res.send('success')
+                } else {
+                    res.send('error')
+                }
+            })
+
+        } else {
+            res.send('incorrect')
+        }
+    })
 });
 
 app.all('/*', function(req, res, next) {

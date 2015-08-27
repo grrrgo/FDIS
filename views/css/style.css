@@ -89,6 +89,13 @@ footer {
     float: left;
     padding-left: 2px;
     cursor: pointer;
+	color:lawngreen;
+
+}
+
+.ctrl-panel-list li a{
+	color:lawngreen;
+
 }
 
 .jump-input {

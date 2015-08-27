@@ -27,9 +27,9 @@
 <div id="parent_div">
 	<!-- Side nav for setting change -->
 <div class="setting-change">
-	<a class="btn btn-success" data-toggle="modal" href="#resetPW"  data-backdrop="false">Change Password</a>
+	<a class="btn btn-success" data-toggle="modal" href="#resetPW"  data-backdrop="true">Change Password</a>
 	<br />
-	<a class="btn btn-success" data-toggle="modal" href="#changeHstr"  data-backdrop="false">Progress Chart Settings</a>	
+	<a class="btn btn-success" data-toggle="modal" href="#changeHstr"  data-backdrop="true">Progress Chart Settings</a>
 
 </div>
 	
@@ -51,19 +51,19 @@
 			<div   class="modal-body">
 			<!-- Popup Div Starts Here -->
 
-				<!--a lot of the form validation is done in the html using angular directives-->
-				<input ng-model="user.password" type="password" ng-change="reAuth()" placeholder="Current Password" tabindex=1/>
-				<span ng-show = "user.password == undefined || user.password == ''" > *</span>
-				<span ng-show="incorrectPw">Wrong password!</span><br/>
-				<input ng-model="user.password2" type="password" ng-change="testPassword()" placeholder="New Password" tabindex=2/>
-				<span ng-show="user.password2 == undefined || user.password == ''"> *</span>
-				<span ng-show="passwordShort2">password must be at least 6 characters</span><br/>
-				<input ng-model="user.password3" type="password" ng-change="testPassword2()" placeholder="Repeat password" tabindex=3/>
-				<span ng-show = "user.password3 == undefined || user.password3 == ''" > *</span>
-				<span ng-show="passwordErr">password doesn't match</span><br/>
+				<input ng-model="user.oldPassword" type="password"  placeholder="Current Password" tabindex=1/>
+				<span style="color:red" ng-show = "user.oldPassword == undefined || user.oldPassword == ''" > *</span><br/>
+				<input ng-model="user.password" type="password" ng-change="testPassword()" placeholder="New Password" tabindex=2/>
+				<span style="color:red" ng-show="user.password2 == undefined || user.password == ''"> *</span>
+				<span style="color:red" ng-show="passwordShort2">password must be at least 6 characters</span><br/>
+				<input ng-model="user.password2" type="password" ng-change="testPassword2()" placeholder="Repeat password" tabindex=3/>
+				<span style="color:red" ng-show = "user.password2 == undefined || user.password2 == ''" > *</span>
+				<span style="color:red" ng-show="passwordErr">password doesn't match</span><br/>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-success" data-dismiss="modal" ng-click="pwSave(user)">Save</button>				
+				<button class="btn btn-success" data-dismiss="modal"
+						ng-disabled = "passwordErr || passwordShort"
+						ng-click="pwSave(user)">Save</button>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 			<div   class="modal-body">
 			<!-- Popup Div Starts Here -->
 				<label for="settings"><strong>Number of historical scores on progress chart</strong><br>
-				<select style="width: 50px" convert-to-number>
+				<select ng-model="numbers" style="width: 50px" convert-to-number>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
@@ -92,7 +92,7 @@
 				
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-success" data-dismiss="modal" ng-click="pwSave(user)">Save</button>				
+				<button class="btn btn-success" data-dismiss="modal" ng-click="init(numbers)">Save</button>
 			</div>
 		</div>
 	</div>

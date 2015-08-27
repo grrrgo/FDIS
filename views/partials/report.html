@@ -4,7 +4,7 @@
     <h4>Dear {{currentUser.firstName}}, your overall score is: {{report.score}}</h4><br/>
     <h4 ng-if="report.score >= 90">Keep up the good work!</h4>
     <div ng-repeat="result in report.wrong">
-        <p>For the question in {{result.category}}: <br/>
+        <p>For the question in {{BOK(result.category)}}: <br/>
             {{result.content}}<br/>
             your answer is: <span style="color: red;">({{result.answer?result.answer:'none'}})&nbsp;
             {{result.answer?result.choices[result.answer]:''}}</span><br/>

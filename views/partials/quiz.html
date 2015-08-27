@@ -8,6 +8,7 @@
             <ul class="ctrl-panel-list" ng-repeat="label in labels">
                 <li><a ng-click="gotoAnchor(label)">{{label}}</a></li>
             </ul>
+            <div style="clear: both;"></div>
         </div>
         <br/>
         <input ng-model="goToHash" class="jump-input" type="text"/><button ng-click="gotoAnchor(goToHash)" >go!</button>
