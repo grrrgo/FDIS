@@ -14,7 +14,7 @@
 	<img src="img/logo3.png" alt="logo">
     <h1>CSQE ePortal</h1>
             <nav ng-controller="navCtrl">
- 				<a href="/dashboard" ng-show="isLoggedIn" ng-if="displayDBoard">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ 				<a href="/dashboard" ng-show="isLoggedIn && displayDBoard">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				<a href="/logout" ng-click="logout()" ng-show="isLoggedIn">Logout </a>
 			</nav>
             
@@ -46,6 +46,7 @@
     <script src="js/controller/loginCtrl.js"></script>
     <script src="js/controller/registerCtrl.js"></script>
     <script src="js/controller/reportCtrl.js"></script>
+    <script src="js/controller/contactCtrl.js"></script>
 </body>
 <footer  style="clear: both;">Copyright &copy; 2015 by Team Acumen | <a href="/contact"> <strong>About Everything</strong></a></footer>
 </html>

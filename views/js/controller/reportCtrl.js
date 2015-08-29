@@ -1,5 +1,5 @@
 angular.module('quizApp').controller('reportCtrl', function ($scope,$rootScope,$http) {
-	$rootScope.displayDBoard = false;
+	$rootScope.displayDBoard = true;
     $scope.BOK  = function (value) {
         var returnVal = '';
         switch (value) {
