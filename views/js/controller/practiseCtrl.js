@@ -24,7 +24,7 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 			BOK = 'Software Configuration Management';
 			break;
 	}
-	$scope.Mode = "Practise Mode" + " (" + BOK + ")";
+	$scope.Mode = "Practice Mode" + " (" + BOK + ")";
 	$rootScope.report = {type:'practise',wrong:[]};
 	$rootScope.wrong = 0;
 	$http.post('/practise', [$routeParams.category]).success(function (response) {
@@ -36,6 +36,11 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 
 	$scope.addLabels = function (id) {
 		$scope.labels.push(id);
+		$scope.labels.sort()
+	};
+
+	$scope.popLabels = function (id) {
+		$scope.labels.pop(id);
 		$scope.labels.sort()
 	};
 

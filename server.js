@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var passPort = require('passport');
 var localStrategy = require('passport-local');
 var session = require('express-session');
-var async = require("async");
+var async = require('async');
+var connectFlash = require('connect-flash');
 var app = express();
 var port = process.env.PORT || 1337;
 app.use(express.static(__dirname + '/views'));
@@ -55,6 +56,7 @@ function getQuestionFromModel(Model, num) {
 var loginService = require('./services/loginService');
 
 //register middle-ware
+app.use(connectFlash());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());

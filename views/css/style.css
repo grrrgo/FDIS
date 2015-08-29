@@ -26,6 +26,7 @@ header h1 {
 	text-align: left;
 	font-size: 34px;
 	font-weight: 100;
+
 	color: firebrick;
 	padding: 0px 0px 30px 50px;
 	font-family: "Times New Roman", Georgia, serif, monospace;
@@ -65,8 +66,8 @@ footer {
 
 .timer {
     position: fixed;
-    top: 50px;
-    right: 55px;
+    top: 5px;
+    right: 45%;
     background-color: cornflowerblue;
     width: 150px;
     height: 40px;
@@ -77,8 +78,8 @@ footer {
 
 .ctrl-panel {
     position: fixed;
-    top: 120px;
-    right: 55px;
+    top: 40%;
+    right: 1%;
     background-color: cornflowerblue;
     width: 150px;
     padding: 5px;

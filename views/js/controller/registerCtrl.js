@@ -21,6 +21,7 @@ angular.module('quizApp').controller('registerCtrl', function ($scope, $rootScop
     $scope.testUsername = function () {
         var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         $scope.usernameErr = !re.test($scope.user.username);
+        console.log($scope.user.username);
     };
 
     //test on the length of first password.

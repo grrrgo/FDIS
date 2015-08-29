@@ -10,7 +10,7 @@
            data-original-title="Please use only letters for names" maxlength="50" placeholder="First name" tabindex=1/>
     <span ng-show="user.firstName == undefined || user.firstName == ''"> *</span><br/>
     <input type="text" id='lName' ng-model="user.lastName" maxlength="50" placeholder="Last name" tabindex=2/><span> &nbsp;</span><br/>
-	<input ng-model="user.username" ng-blur="testUsername()" type="email" maxlength="56" placeholder="Email" tabindex=3/>
+	<input type="text" ng-model="user.username" ng-blur="testUsername()"  maxlength="56" placeholder="Email" tabindex=3/>
     <span ng-show="user.username == undefined || user.username == ''"> *</span>
     <span ng-show="usernameErr && user.username != undefined">invalid email address</span><br/>
     <input ng-model="user.password" type="password" ng-change="testPassword()" placeholder="Password" tabindex=4/>

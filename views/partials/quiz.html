@@ -13,11 +13,10 @@
         <br/>
         <input ng-model="goToHash" class="jump-input" type="text"/><button ng-click="gotoAnchor(goToHash)" >go!</button>
         <br/>
-        <span>Memo:</span><br/>
-        <textarea class="memo"></textarea>
     </div>
     <div class="container question-box" ng-repeat="question in questions">
-        <a ng-click="addLabels($index + 1)">Mark</a>
+        <a ng-show="labels.indexOf($index+1)<0" ng-click="addLabels($index + 1)">Mark</a>
+        <a ng-show="labels.indexOf($index+1)>=0" ng-click="popLabels($index + 1)">Remove Mark</a>
         <a id="{{$index + 1}}"></a>
         <br/><p>{{ $index + 1 +'. ' + question.content }}</p>
         <label><input type="radio" ng-click="questions[$index].answer = 'A'" name="{{$index}}">&nbsp;&nbsp;(A)&nbsp;{{ question.choices.A }}</label><br/>

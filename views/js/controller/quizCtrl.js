@@ -14,11 +14,10 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
         $scope.Minutes =Minutes<10?'0'+Minutes:Minutes;
         $scope.Seconds =Seconds<10?'0'+Seconds:Seconds;
         if ($scope.Hours == 0 && $scope.Minutes == 0 && $scope.Seconds ==0){
-            alert("Time's up, submitting quiz...")
+            alert("Time's up, submitting quiz...");
             $scope.submit()
         }
     },1000);
-
 
     $scope.$on('$destroy', function() {
         // Make sure that the interval is destroyed too
@@ -36,6 +35,12 @@ app = angular.module('quizApp').controller('quizCtrl', function ($scope, $http, 
 
     $scope.addLabels = function (id) {
         $scope.labels.push(id);
+        $scope.labels.sort()
+    };
+
+    $scope.popLabels = function (id) {
+        console.log(id, $scope.labels.indexOf(id));
+        $scope.labels.splice($scope.labels.indexOf(id),1);
         $scope.labels.sort()
     };
 

@@ -10,5 +10,10 @@ var userSchema = new mongoose.Schema({
     practiseReport: Array
 });
 
+userSchema.methods.validPassword = function( pwd ) {
+    // EXAMPLE CODE!
+    return ( this.password === pwd );
+};
+
 module.exports = mongoose.model('userModel', userSchema);
 
