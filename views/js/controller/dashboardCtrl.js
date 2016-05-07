@@ -92,13 +92,13 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
                     "id": "series-1"
                 },
                 {
-                    "name": "General Knowledge",
+                    "name": "General",
                     "data": [],
                     "type": "column",
                     "id": "series-2"
                 },
                 {
-                    "name": "Software Quality Management",
+                    "name": "AngularJS",
                     "data": [],
                     "type": "column",
                     "id": "series-3"
@@ -106,14 +106,14 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
                 {
                     "data": [],
                     "id": "series-4",
-                    "name": "Engineering Process",
+                    "name": "HTML",
                     "type": "column",
                     "dashStyle": "Solid"
                 },
                 {
                     "data": [],
                     "id": "series-5",
-                    "name": "Project Management",
+                    "name": "CSS",
                     "dashStyle": "Solid",
                     "type": "column"
                 },
@@ -121,19 +121,19 @@ angular.module('quizApp').controller('dashboardCtrl', function($http, $scope, $r
                     "data": [],
                     "id": "series-6",
                     "type": "column",
-                    "name": "Metrics & Analysis"
+                    "name": "JavaScript"
                 },
                 {
                     "data": [],
                     "id": "series-7",
                     "type": "column",
-                    "name": "Software Verification & Validation"
+                    "name": "BootStrap"
                 },
                 {
                     "data": [],
                     "id": "series-8",
                     "type": "column",
-                    "name": "Software Configuration Management"
+                    "name": "jQuery"
                 }
             ],
             "title": {

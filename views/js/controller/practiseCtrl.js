@@ -3,25 +3,25 @@ angular.module('quizApp').controller('practiseCtrl', function($scope, $http, $in
 	var BOK = "";
 	switch ($routeParams.category){
 		case 'GKModel':
-			BOK =  "General Knowledge";
+			BOK =  "General";
 			break;
-		case 'SQMModel':
-			BOK = 'Software Quality Management';
+		case 'ANGModel':
+			BOK = 'AngularJS';
 			break;
-		case 'EPModel':
-			BOK = 'Engineering Processes';
+		case 'HTMLModel':
+			BOK = 'HTML';
 			break;
-		case 'PMModel':
-			BOK = 'Project Management';
+		case 'CSSModel':
+			BOK = 'CSS';
 			break;
-		case 'MAModel':
-			BOK = 'Metrics & Analysis';
+		case 'JSModel':
+			BOK = 'JavaScript';
 			break;
-		case 'SVVModel':
-			BOK = 'Software Verification & Validation';
+		case 'BOOTModel':
+			BOK = 'BootStrap';
 			break;
-		case 'SCMModel':
-			BOK = 'Software Configuration Management';
+		case 'JQModel':
+			BOK = 'jQuery';
 			break;
 	}
 	$scope.Mode = "Practice Mode" + " (" + BOK + ")";

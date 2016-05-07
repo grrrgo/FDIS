@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var SQMSchema = new mongoose.Schema({
+var HTMLSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var SQMSchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('SQMModel', SQMSchema);
+module.exports = mongoose.model('HTMLModel', HTMLSchema);

@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var MASchema = new mongoose.Schema({
+var ANGSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var MASchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('MAModel', MASchema);
+module.exports = mongoose.model('ANGModel', ANGSchema);

@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var SCMSchema = new mongoose.Schema({
+var BOOTSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var SCMSchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('SCMModel', SCMSchema);
+module.exports = mongoose.model('BOOTModel', BOOTSchema);

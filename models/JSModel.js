@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var PMSchema = new mongoose.Schema({
+var JSSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var PMSchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('PMModel', PMSchema);
+module.exports = mongoose.model('JSModel', JSSchema);

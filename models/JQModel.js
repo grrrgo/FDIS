@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var EPSchema = new mongoose.Schema({
+var JQSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var EPSchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('EPModel', EPSchema);
+module.exports = mongoose.model('JQModel', JQSchema);

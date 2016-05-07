@@ -10,18 +10,17 @@ var connectFlash = require('connect-flash');
 var app = express();
 var port = process.env.PORT || 1337;
 app.use(express.static(__dirname + '/views'));
-mongoose.connect('mongodb://localhost:27017/Quiz');
+mongoose.connect('mongodb://localhost:27017/FDIS');
 
 //models
 var userModel = require('./models/userModel.js');
-var questionModel = require('./models/questionModel.js');
 var GKModel = require('./models/GKModel.js');
-var SQMModel = require('./models/SQMModel.js');
-var EPModel = require('./models/EPModel.js');
-var MAModel = require('./models/MAModel.js');
-var SVVModel = require('./models/SVVModel.js');
-var SCMModel = require('./models/SCMModel.js');
-var PMModel = require('./models/PMModel.js');
+var ANGModel = require('./models/ANGModel.js');
+var HTMLModel = require('./models/HTMLModel.js');
+var JSModel = require('./models/JSModel.js');
+var BOOTModel = require('./models/BOOTModel.js');
+var JQModel = require('./models/JQModel.js');
+var CSSModel = require('./models/CSSModel.js');
 var historyModel = require('./models/historyModels.js');
 
 //Utils
@@ -126,13 +125,13 @@ app.get('/loggedin', function (req, res) {
 
 app.post('/quiz', function (req, res) {
     var jobs = [
-        getQuestionFromModel(EPModel,5),
+        getQuestionFromModel(HTMLModel,5),
         getQuestionFromModel(GKModel,5),
-        getQuestionFromModel(MAModel,5),
-        getQuestionFromModel(PMModel,5),
-        getQuestionFromModel(SCMModel,5),
-        getQuestionFromModel(SQMModel,5),
-        getQuestionFromModel(SVVModel,5)];
+        getQuestionFromModel(JSModel,5),
+        getQuestionFromModel(CSSModel,5),
+        getQuestionFromModel(JQModel,5),
+        getQuestionFromModel(ANGModel,5),
+        getQuestionFromModel(BOOTModel,5)];
     async.parallel(jobs, function (err,result) {
         var returnVal=[];
         result.forEach(function (value, index ,array) {
@@ -152,23 +151,23 @@ app.post('/practise', function (req, res) {
         case "GKModel":
             cat = GKModel;
             break;
-        case "SQMModel":
-            cat = SQMModel;
+        case "ANGModel":
+            cat = ANGModel;
             break;
-        case "EPModel":
-            cat = EPModel;
+        case "HTMLModel":
+            cat = HTMLModel;
             break;
-        case "PMModel":
-            cat = PMModel;
+        case "CSSModel":
+            cat = CSSModel;
             break;
-        case "MAModel":
-            cat = MAModel;
+        case "JSModel":
+            cat = JSModel;
             break;
-        case "SVVModel":
-            cat = SVVModel;
+        case "BOOTModel":
+            cat = BOOTModel;
             break;
-        case "SCMModel":
-            cat = SCMModel;
+        case "JQModel":
+            cat = JQModel;
             break;
     }
     async.series([getQuestionFromModel(cat,5)], function (err,result) {

@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var SVVSchema = new mongoose.Schema({
+var CSSSchema = new mongoose.Schema({
     id: Number,
     content: String,
     choices: Object,
@@ -10,4 +10,4 @@ var SVVSchema = new mongoose.Schema({
     image: String
 });
 
-module.exports = mongoose.model('SVVModel', SVVSchema);
+module.exports = mongoose.model('CSSModel', CSSSchema);

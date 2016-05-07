@@ -4,25 +4,25 @@ angular.module('quizApp').controller('reportCtrl', function ($scope,$rootScope,$
         var returnVal = '';
         switch (value) {
             case 'gk':
-                returnVal = "General Knowledge";
+                returnVal = "General";
                 break;
             case 'sqm':
-                returnVal = 'Software Quality Management';
+                returnVal = 'AngularJS';
                 break;
             case 'ep':
-                returnVal = 'Engineering Processes';
+                returnVal = 'HTML';
                 break;
             case 'pm':
-                returnVal = 'Project Management';
+                returnVal = 'CSS';
                 break;
             case 'mam':
-                returnVal = 'Metrics & Analysis';
+                returnVal = 'JavaScript';
                 break;
             case 'SVV':
-                returnVal = 'Software Verification & Validation';
+                returnVal = 'BootStrap';
                 break;
             case 'scm':
-                returnVal = 'Software Configuration Management';
+                returnVal = 'jQuery';
                 break;
         }
         return returnVal + ' category';

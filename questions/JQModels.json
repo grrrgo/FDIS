@@ -1,0 +1,264 @@
+[{
+  content: "The number of lines of code to be developed during a software project is defined as a/an:",
+  choices: {
+    A: "Attribute of the software",
+    B: "Measure of the software",
+    C: "Entity of the software",
+    D: "Software metric"
+  },
+  correctChoice: "B",
+  category: "scm"
+},
+  {
+    content: "Volatility metrics are typically applied to:",
+    choices: {
+      A: "Requirements",
+      B: "Cyclomatic complextiy",
+      C: "Project acceleration",
+      D: "Function points"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "In general, Perto analysis is an application measure of software quality because:",
+    choices: {
+      A: "Software defects tend to cluster in a small number of components",
+      B: "Software defects tend to cluster in a majority of components",
+      C: "Software defects tend to cluster in the most complex component",
+      D: "Software defects tend to cluster in a random number of components"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "A performance dashboard displays:",
+    choices: {
+      A: "Flashbone diagrams showing root causes",
+      B: "Performance histograms and bar charts",
+      C: "Many different types of chars and displays",
+      D: "Dial gauges (like an automobile dashboard)"
+    },
+    correctChoice: "C",
+    category: "scm"
+  },
+  {
+    content: "Which of the following is the best tool to determine if there is a relationship between the amount of time a customer is in the showroom compared to the amount of maney the customer spends?",
+    choices: {
+      A: "Scatter diagram",
+      B: "Nominal group technique",
+      C: "Histogram",
+      D: "Cause and effect diagram"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "The sum of the squared deviations of a group of measurements from their mean divided by the number of measurements equals the:",
+    choices: {
+      A: "Standard deviation",
+      B: "Variance",
+      C: "Range",
+      D: "Mean deviation"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "The acronym KSLOC represents which type of software attribute?",
+    choices: {
+      A: "Defects",
+      B: "Productivity",
+      C: "Coverage",
+      D: "Size"
+    },
+    correctChoice: "D",
+    category: "scm"
+  },
+  {
+    content: "The Likert scale is what type of scale?",
+    choices: {
+      A: "Norminal",
+      B: "Ordinal",
+      C: "Interval",
+      D: "Ratio"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "A metric established to measure the number of error messages a tester can test per hour can be used to:",
+    choices: {
+      A: "Predict the useability of the computer program",
+      B: "Determine the number of error messages used in future computer programs",
+      C: "Improve the tester's performance",
+      D: "Reduce the number of error messages tested for the next module"
+    },
+    correctChoice: "C",
+    category: "scm"
+  },
+  {
+    content: "Which of the following techniques would be considered a framework to select the appropriate metric for project use?",
+    choices: {
+      A: "Goal/Question/Metric paradigm",
+      B: "Halstead's software science",
+      C: "The SLIM model",
+      D: "The COCOMO model"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "The ideal value for defect removal efficiency is:",
+    choices: {
+      A: "0",
+      B: "1",
+      C: "Greater than 1",
+      D: "Less than 0"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "The cyclomatic complexity metric, developed by McCabe, is used to measure the complexity of a software program. This metric directly measures the:",
+    choices: {
+      A: "Thousand source lines of code (KSLOC)",
+      B: "Paths through the source code",
+      C: "Commands executed in the source code",
+      D: "Source code statements expected"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "The primary attributes of a test plan consist of which of the following?",
+    choices: {
+      A: "Generators and stubs",
+      B: "Analyzers and processors",
+      C: "Comparators and harnesses",
+      D: "Resources and schedules"
+    },
+    correctChoice: "D",
+    category: "scm"
+  },
+  {
+    content: "A combination of hardware and software that provides an approximation of the working environment of a software product is called a:",
+    choices: {
+      A: "Reliability model",
+      B: "Logic analyzer",
+      C: "Simulator",
+      D: "Requirements tracer"
+    },
+    correctChoice: "C",
+    category: "scm"
+  },
+  {
+    content: "Security testing is the process of attempting to devise test cases that:",
+    choices: {
+      A: "Convert the program's security checks",
+      B: "Subvert the program's security checks",
+      C: "Invert the program's security checks",
+      D: "Revert the program's security checks"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "The review that involves the presentation of an author's software element is called a:",
+    choices: {
+      A: "Peer review",
+      B: "Walkthrough",
+      C: "Technical review",
+      D: "Fagan inspection"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "A computer program that has 10 edges, 6 nodes, and 1 unconnected part of the graph has a cyclomatic complexity of:",
+    choices: {
+      A: "15",
+      B: "6",
+      C: "5",
+      D: "17"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "The kitting process involves:",
+    choices: {
+      A: "The CD-ROM production process",
+      B: "The development of packaging inserts",
+      C: "Building the configuration items",
+      D: "The assembly of components for delivery"
+    },
+    correctChoice: "D",
+    category: "scm"
+  },
+  {
+    content: "The principal reason for establishing an entry criteria during the software inspection process is to:",
+    choices: {
+      A: "Meet project schedules",
+      B: "Ensure time is not wasted",
+      C: "Meet quality assurance requirements",
+      D: "Ensure that the inspection team is prepared"
+    },
+    correctChoice: "B",
+    category: "scm"
+  },
+  {
+    content: "Regression tests are run to:",
+    choices: {
+      A: "Study program behavior at boundary conditions",
+      B: "Verify that system parameters are working as planned",
+      C: "Verify that a previously solved problem does not recur",
+      D: "Examine error handling when extreme values are used"
+    },
+    correctChoice: "C",
+    category: "scm"
+  },
+  {
+    content: "Worst-case testing can be described as:",
+    choices: {
+      A: "Regression testing with specific performance constraints",
+      B: "Introducing new usability constraints within a series of regression tests",
+      C: "Repeating a series of tests to ensure that the system has not degraded",
+      D: "Testing error handling at boundary or extreme values"
+    },
+    correctChoice: "D",
+    category: "scm"
+  },
+  {
+    content: "Black box testing should be performed in conjunction with which of the following other test strategies?",
+    choices: {
+      A: "White box testing",
+      B: "Beta testing",
+      C: "Top-down testing",
+      D: "Bottom-up testing"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "A software requirements interface analysis is performed to ensure that:",
+    choices: {
+      A: "External and internal interfaces are completely specified",
+      B: "Software design interfaces are completely and accurately specified",
+      C: "The information and control flow between and within components is accurate",
+      D: "External interfaces between software functions are completely specified"
+    },
+    correctChoice: "A",
+    category: "scm"
+  },
+  {
+    content: "Testing a software product or system to determine if modifications have introduced faults or defects is called:",
+    choices: {
+      A: "System testing",
+      B: "Bottom-up testing",
+      C: "Integrated testing",
+      D: "Regression testing"
+    },
+    correctChoice: "D",
+    category: "scm"
+  }]
